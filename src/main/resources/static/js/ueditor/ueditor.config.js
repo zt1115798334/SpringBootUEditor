@@ -28,7 +28,7 @@
         //获取主机地址
         var localhostPaht = curWwwPath.substring(0, pos);//获取带_7"的项目名，如：/l〇msV5-web
         // var projectName = pathName.substring(0, pathName.substr(l).indexOf('/') + 1);
-        return curWwwPath;
+        return (localhostPaht);
     }
 
     var URL = window.UEDITOR_HOME_URL || getUEBasePath();

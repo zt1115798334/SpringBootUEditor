@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.zt</groupId>
     <artifactId>SpringBoot-UEditor</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>SpringBoot-UEditor Maven Webapp</name>
     <url>http://maven.apache.org</url>
@@ -11,7 +11,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.7.RELEASE</version>
+        <version>1.5.2.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -62,25 +62,25 @@
         <plugin>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-maven-plugin</artifactId>
-            <configuration>
-                <fork>true</fork>
-                <executable>true</executable>
-            </configuration>
+            <!--<configuration>-->
+                <!--<fork>true</fork>-->
+                <!--<executable>true</executable>-->
+            <!--</configuration>-->
         </plugin>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-jar-plugin</artifactId>
-            <configuration>
-                <archive>
-                    <manifest>
-                        <addClasspath>true</addClasspath>
-                        <useUniqueVersions>false</useUniqueVersions>
-                        <classpathPrefix>lib/</classpathPrefix>
-                        <mainClass>com.zt.App</mainClass>
-                    </manifest>
-                </archive>
-            </configuration>
-        </plugin>
+        <!--<plugin>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-jar-plugin</artifactId>-->
+            <!--<configuration>-->
+                <!--<archive>-->
+                    <!--<manifest>-->
+                        <!--<addClasspath>true</addClasspath>-->
+                        <!--<useUniqueVersions>false</useUniqueVersions>-->
+                        <!--<classpathPrefix>lib/</classpathPrefix>-->
+                        <!--<mainClass>com.zt.App</mainClass>-->
+                    <!--</manifest>-->
+                <!--</archive>-->
+            <!--</configuration>-->
+        <!--</plugin>-->
     </plugins>
     </build>
 </project>

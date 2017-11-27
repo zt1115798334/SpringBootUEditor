@@ -4,11 +4,13 @@
 <#--<meta charset="UTF-8">-->
     <title>完整demo</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-    <script type="text/javascript" charset="utf-8" src="/js/ueditor/ueditor.config.js?version=1"></script>
+    <script type="text/javascript" charset="utf-8" src="/js/ueditor/ueditor.config.js?version=12"></script>
     <script type="text/javascript" charset="utf-8" src="/js/ueditor/ueditor.all.min.js"></script>
     <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
     <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
     <script type="text/javascript" charset="utf-8" src="/js/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/js/utils.js"></script>
     <style type="text/css">
         div {
             width: 100%;
@@ -18,7 +20,7 @@
 <body>
 <div>
     <label for="title" class="col-md-2 control-label">新闻详情</label>
-    <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
+    <div><script id="editor" type="text/plain" style="width:1024px;height:500px;"></script></div>
 </div>
 <div id="btns">
     <div>
@@ -47,6 +49,7 @@
     <div>
         <button onclick="getLocalData()" >获取草稿箱内容</button>
         <button onclick="clearLocalData()" >清空草稿箱</button>
+        <button onclick="saveShow()" >添加显示信息</button>
     </div>
 
 </div>
@@ -96,7 +99,7 @@
     function setContent(isAppendTo) {
         var arr = [];
         arr.push("使用editor.setContent('欢迎使用ueditor')方法可以设置编辑器的内容");
-        UE.getEditor('editor').setContent('欢迎使用ueditor', isAppendTo);
+        UE.getEditor('editor').setContent('<p>发疯撒<img src="/image/20171127/1511767131324006856.png" title="1511767131324006856.png" alt="QQ截图20171016145501.png"/></p>', isAppendTo);
         alert(arr.join("\n"));
     }
     function setDisabled() {
@@ -164,6 +167,18 @@
     function clearLocalData () {
         UE.getEditor('editor').execCommand( "clearlocaldata" );
         alert("已清空草稿箱")
+    }
+
+    function saveShow() {
+        var content = UE.getEditor('editor').getContent();
+        var url = "/save";
+        var params = {
+            content:content
+        };
+        execAjax(url,params,callback);
+        function callback(result) {
+            console.log(result);
+        }
     }
 </script>
 </body>

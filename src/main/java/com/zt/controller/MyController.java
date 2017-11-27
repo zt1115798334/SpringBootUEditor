@@ -2,9 +2,9 @@ package com.zt.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author zhangtong
@@ -18,19 +18,10 @@ public class MyController {
         return "index";
     }
 
-    @RequestMapping(value = "/imgUpload2")
+    @RequestMapping(value = "save",method = RequestMethod.POST)
     @ResponseBody
-    public String imgUpload(HttpServletRequest request) {
-        String s = "{\n" +
-                "            \"imageActionName\": \"uploadimage\",\n" +
-                "                \"imageFieldName\": \"file\", \n" +
-                "                \"imageMaxSize\": 2048000, \n" +
-                "                \"imageAllowFiles\": [\".png\", \".jpg\", \".jpeg\", \".gif\", \".bmp\"], \n" +
-                "                \"imageCompressEnable\": true, \n" +
-                "                \"imageCompressBorder\": 1600, \n" +
-                "                \"imageInsertAlign\": \"none\", \n" +
-                "                \"imageUrlPrefix\": \"\",\n" +
-                "                \"imagePathFormat\": \"/ueditor/jsp/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}\" }";
-        return s;
+    public String save(@RequestParam String content) {
+        System.out.println("content = " + content);
+        return content;
     }
 }
